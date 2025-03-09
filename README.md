@@ -157,3 +157,41 @@ customers_df = pd.DataFrame(customers_data)
 | 3   | Robert Johnson | 42  | robert.j@example.com   | Chicago     | 2023-01-15  | 320.25      |
 | 4   | Maria Garcia   | 31  | maria.g@example.com    | Miami       | 2023-01-22  | 540.75      |
 | 5   | David Kim      | 25  | david.kim@example.com  | Seattle     | 2023-01-29  | 185.50      |
+
+
+## Dremel Query Engine Implementation
+
+A Dremel-inspired query engine that incorporates the key architectural principles behind Google BigQuery.
+Here are the main Dremel concepts I've applied:
+
+1. Columnar Processing
+
+Uses PyArrow's columnar format to efficiently process columns instead of rows
+Dramatically reduces I/O by only reading required columns
+
+2. Projection Pushdown
+
+Identifies exactly which columns are needed for the query
+Reads only necessary columns from storage, reducing I/O
+
+3. Predicate Pushdown
+
+Pushes filter conditions down to the storage layer
+Filters data at read time rather than loading and then filtering
+
+4. Parallel Execution
+
+Processes multiple partitions simultaneously with thread pooling
+Distributes workload across available CPU cores
+
+5. Partitioning Support
+
+Handles multiple parquet files for a single logical table
+Supports directory structures that represent partitioning
+
+6. Schema Awareness
+
+Reads and understands the schema before executing queries
+Uses schema information for optimization decisions
+
+
