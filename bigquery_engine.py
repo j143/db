@@ -565,7 +565,7 @@ if __name__ == "__main__":
     # Example queries
     queries = [
         "SELECT name, age FROM customers WHERE age > 30",
-        "SELECT * FROM orders WHERE total > 100 AND status = 'completed'",
+        "SELECT * FROM orders WHERE subtotal > 100 AND status = 'completed'",
         "SELECT product_id, name, price FROM products WHERE price > 50 LIMIT 5"
     ]
     
